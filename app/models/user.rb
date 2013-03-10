@@ -16,10 +16,8 @@ class User < ActiveRecord::Base
 
     user.first_name      ||= identity.first_name
     user.last_name       ||= identity.last_name
+    user.email = identity.email if user.email.blank?
     user.profile_picture ||= identity.image
-
-    user.skip_confirmation!
-    user.confirm! unless user.confirmed?
 
     user.identities << identity
 

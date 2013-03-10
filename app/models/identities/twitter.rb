@@ -17,6 +17,10 @@ class Identities::Twitter < Identity
     omniauth_info[:name].slice(/[^ ]+$/)
   end
 
+  def email
+    ""
+  end
+
   # Twitter only returns a smaller image; this is the full size
   def image
     omniauth_info[:image].sub(/_normal(?=\.\w{3}$)/, '')

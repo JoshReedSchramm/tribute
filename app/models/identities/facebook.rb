@@ -7,6 +7,14 @@ class Identities::Facebook < Identity
     omniauth_info[:first_name]
   end
 
+  def email
+    omniauth_info[:email]
+  end
+
+  def username
+    omniauth_info[:nickname]
+  end
+
   def image
     "http://graph.facebook.com/#{uid}/picture?type=large"
   end
