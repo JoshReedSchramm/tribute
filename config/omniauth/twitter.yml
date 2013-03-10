@@ -1,0 +1,11 @@
+development:
+  key:    'qVDlOR2oQhbP8qKjpkYCQ'
+  secret: 'ZMtaDESslTEOQL5RwqyLv1HJiQrEXCM5sAP42tsc'
+
+staging:
+  key:    'Gb3DRV7vvNQlTCB7kX6m4A'
+  secret: 'zDeS1S8RDlfSjqMV2Ikh9kveKfp5AMvB7BSkGDGA'
+
+production:
+  key:    'sCHV1W0EW2qWtCeE9MptCg'
+  secret: 'FqMeyGXzLaET6DR4m4vMnVGqDUZEtQOuTJ1fpQgsc'

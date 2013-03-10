@@ -1,0 +1,11 @@
+development:
+  key:    '405308936206775'
+  secret: 'baeca741776e24fdf0cebe495c027886'
+
+staging:
+  key:    '548410051839893'
+  secret: '25f9b187883c9110797bdde5008ced16'
+
+production:
+  key:    '163037913834784'
+  secret: 'aae7887685bd67f27c155cf287c89763'
