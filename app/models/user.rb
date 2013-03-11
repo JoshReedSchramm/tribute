@@ -10,6 +10,8 @@ class User < ActiveRecord::Base
 
   has_many :pages, foreign_key: :owner_id
 
+  validates :first_name, :presence => true
+
   def self.find_or_create_by_omniauth_hash(auth_hash, current_user = nil)
     identity = Identity.find_or_create_by_omniauth_hash(auth_hash)
     identity = identity.becomes(identity.type.constantize)

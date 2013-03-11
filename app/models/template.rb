@@ -3,4 +3,7 @@ class Template < ActiveRecord::Base
 
   belongs_to :created_by, class_name: "User"
   has_many :pages
+
+  validates :name, :presence => true
+  validates :class_name, :presence => true
 end

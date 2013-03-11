@@ -3,3 +3,5 @@
 
 en:
   hello: "Hello world"
+  errors:
+    access_denied: "You do not have access to this section of the site"
