@@ -1,0 +1,28 @@
+<p>
+  <b>Name:</b>
+  <%= @page.name %>
+</p>
+
+<p>
+  <b>Tagline:</b>
+  <%= @page.tagline %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @page.description %>
+</p>
+
+<p>
+  <b>Main image:</b>
+  <%= @page.main_image %>
+</p>
+
+<p>
+  <b>Template:</b>
+  <%= @page.template.name %>
+</p>
+
+
+<%= link_to 'Edit', edit_page_path(@page) %> |
+<%= link_to 'Back', pages_path %>

@@ -8,6 +8,8 @@ class User < ActiveRecord::Base
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me
 
+  has_many :pages, foreign_key: :owner_id
+
   def self.find_or_create_by_omniauth_hash(auth_hash, current_user = nil)
     identity = Identity.find_or_create_by_omniauth_hash(auth_hash)
     identity = identity.becomes(identity.type.constantize)

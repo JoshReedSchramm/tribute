@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130310180723) do
+ActiveRecord::Schema.define(:version => 20130310221046) do
 
   create_table "identities", :force => true do |t|
     t.integer  "user_id"
@@ -27,6 +27,26 @@ ActiveRecord::Schema.define(:version => 20130310180723) do
 
   add_index "identities", ["provider", "uid"], :name => "index_identities_on_provider_and_uid", :unique => true
   add_index "identities", ["user_id"], :name => "index_identities_on_user_id"
+
+  create_table "pages", :force => true do |t|
+    t.string   "name"
+    t.string   "tagline"
+    t.text     "description"
+    t.string   "main_image"
+    t.string   "template_id"
+    t.integer  "owner_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  create_table "templates", :force => true do |t|
+    t.string   "name"
+    t.string   "class_name"
+    t.text     "description"
+    t.integer  "created_by_id"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "", :null => false

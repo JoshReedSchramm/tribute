@@ -1,4 +1,10 @@
 Tribute::Application.routes.draw do
+  resources :templates
+
+
+  resources :pages
+
+
   devise_for :users,
     controllers: {
       omniauth_callbacks: "users/omniauth_callbacks"
