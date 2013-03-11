@@ -1,5 +1,5 @@
 Tribute::Application.routes.draw do
-  resources :pages
+  resources :pages, :except => [:show]
 
   devise_for :users,
     controllers: {
@@ -18,4 +18,6 @@ Tribute::Application.routes.draw do
   end
 
   root :to => 'home#index'
+
+  get ":id", to: 'pages#show', as: "page"
 end
