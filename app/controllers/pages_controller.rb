@@ -1,12 +1,13 @@
 class PagesController < ApplicationController
   before_filter :get_templates, :only => [:new, :edit, :create, :update]
+  before_filter :get_page, :only => [:edit, :update, :destroy, :show]
+  before_filter :require_owner, :only => [:edit, :update, :destroy]
 
   def index
     @pages = Page.all
   end
 
   def show
-    @page = Page.find(params[:id])
     @body_class = @page.template.class_name unless @page.template.nil?
   end
 
@@ -15,7 +16,6 @@ class PagesController < ApplicationController
   end
 
   def edit
-    @page = Page.find(params[:id])
   end
 
   def create
@@ -30,8 +30,6 @@ class PagesController < ApplicationController
   end
 
   def update
-    @page = Page.find(params[:id])
-
     if @page.update_attributes(params[:page])
       redirect_to @page, notice: 'Page was successfully updated.'
     else
@@ -40,14 +38,23 @@ class PagesController < ApplicationController
   end
 
   def destroy
-    @page = Page.find(params[:id])
     @page.destroy
 
     redirect_to pages_url
   end
 
   private
-  def get_templates
-    @templates = Template.all
-  end
+    def get_templates
+      @templates = Template.all
+    end
+
+    def get_page
+      @page = Page.find(params[:id])
+    end
+
+    def require_owner
+      unless @page.allows_editor?(current_user)
+        redirect_to pages_path, alert: t('errors.bad_editor') and return false
+      end
+    end
 end
