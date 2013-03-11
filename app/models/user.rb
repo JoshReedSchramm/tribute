@@ -1,16 +1,18 @@
 class User < ActiveRecord::Base
+  extend FriendlyId
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,
          :omniauthable
 
   has_many :identities, dependent: :destroy
-
-  # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me
-
   has_many :pages, foreign_key: :owner_id
 
+  attr_accessible :email, :password, :password_confirmation, :remember_me
+
   validates :first_name, :presence => true
+
+  friendly_id :full_name, use: :slugged
 
   def self.find_or_create_by_omniauth_hash(auth_hash, current_user = nil)
     identity = Identity.find_or_create_by_omniauth_hash(auth_hash)
@@ -22,9 +24,14 @@ class User < ActiveRecord::Base
     user.last_name       ||= identity.last_name
     user.email = identity.email if user.email.blank?
     user.profile_picture ||= identity.image
+    user.save
 
     user.identities << identity
 
     user
+  end
+
+  def full_name
+    "#{first_name} #{last_name}"
   end
 end

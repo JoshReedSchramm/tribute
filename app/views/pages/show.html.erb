@@ -15,7 +15,9 @@
 
 <p>
   <b>Main image:</b>
-  <%= @page.main_image %>
+  <%= link_to @page.main_image.url, target: '_blank' do %>
+    <%= image_tag @page.main_image.thumb %>
+  <% end %>
 </p>
 
 <p>
@@ -25,6 +27,6 @@
 
 
 <% if @page.allows_editor?(current_user) %>
-  <%= link_to 'Edit', edit_page_path(page) %> |
+  <%= link_to 'Edit', edit_page_path(@page) %> |
 <% end %>
 <%= link_to 'Back', pages_path %>

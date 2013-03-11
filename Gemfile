@@ -9,11 +9,13 @@ gem 'rails', '3.2.12'
 gem 'pg'
 gem 'carrierwave'
 gem 'fog', '~>1.3.1'
+gem 'rmagick'
 gem 'thin'
 gem 'devise'
 gem 'omniauth'
 gem 'omniauth-facebook'
 gem 'omniauth-twitter'
+gem "friendly_id", "~> 4.0.9"
 
 # Gems used only for assets and not required
 # in production environments by default.

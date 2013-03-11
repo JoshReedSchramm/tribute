@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130311031056) do
+ActiveRecord::Schema.define(:version => 20130311033907) do
 
   create_table "identities", :force => true do |t|
     t.integer  "user_id"
@@ -37,7 +37,10 @@ ActiveRecord::Schema.define(:version => 20130311031056) do
     t.integer  "owner_id"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
+    t.string   "slug"
   end
+
+  add_index "pages", ["slug"], :name => "index_pages_on_slug", :unique => true
 
   create_table "templates", :force => true do |t|
     t.string   "name"
@@ -65,9 +68,11 @@ ActiveRecord::Schema.define(:version => 20130311031056) do
     t.string   "last_name"
     t.string   "profile_picture"
     t.boolean  "admin",                  :default => false
+    t.string   "slug"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
+  add_index "users", ["slug"], :name => "index_users_on_slug", :unique => true
 
 end
