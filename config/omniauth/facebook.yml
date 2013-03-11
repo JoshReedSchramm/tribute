@@ -7,5 +7,5 @@ staging:
   secret: 'e1b0d49c46a13557505eb6d8df1c5a5f'
 
 production:
-  key:    '434633133291614'
-  secret: 'e1b0d49c46a13557505eb6d8df1c5a5f'
+  key:    '296944600434016'
+  secret: 'efef7b969f7a2585999ec67d7c763a9e'
