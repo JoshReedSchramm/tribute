@@ -4,6 +4,6 @@ class Page < ActiveRecord::Base
   belongs_to :owner, class_name: "User"
   belongs_to :template
 
-  validates :template_id, presence: true, inclusion: Template.all.map(&:id.to_s)
+  validates :template_id, presence: true#, inclusion: Template.all.map(&:id)
   validates :name, presence: true
 end
